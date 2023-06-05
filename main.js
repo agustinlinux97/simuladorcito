@@ -144,6 +144,9 @@ function guardarGastos() {
         
         let ingresos = parseInt(document.getElementById("ingresosMensuales").value);
         let lineaDePobreza = 191800;
+        if (!ingresos){
+            alert("Ingrese sus ingresos, sino no podremos ingresar los ingresos de la ingresada... Jeje")
+        }
         let sobrante = ingresos - totalGastos;
             document.getElementById("totalSobrante").innerHTML = "<h2>Total sobrante: $" + sobrante + "</h2>";
             document.getElementById("mostrarPobreza").innerHTML = "<h2>Línea de pobreza: $" + lineaDePobreza + "</h2>";
@@ -178,13 +181,36 @@ function guardarGastos() {
 
 // OBJETO DE PERSONAS CONVIVIENTES
 
-function convivientes(){
-    function Persona(nombre, edad, trabaja){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.trabaja = trabaja;
-    }
-    let conviviente = document.getElementById("nombreConviviente").value;
-    let edad = document.getElementById("edadConviviente").value;
-    let trabaja = document.getElementById("trabaja").value;
+
+
+function Persona(nombre, edad, trabaja) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.trabaja = trabaja;
 }
+
+    // Guardar datos en array
+    const personas = [];
+
+    document.getElementById("personasConvivientesForm").addEventListener("submit", function(e) {
+    e.preventDefault(); 
+
+    let nombre = document.getElementById("nombre").value;
+    let edad = document.getElementById("edad").value;
+    let trabaja = document.getElementById("trabaja").value;
+
+    let persona = new Persona(nombre, edad, trabaja);
+
+    personas.push(persona);
+
+    // Mostrar convivientes
+    let datosPersonas = document.getElementById("datosConvivientes");
+
+    personas.forEach(function(persona){
+        let personaDiv = document.createElement("div");
+        personaDiv.innerHTML = "Nombre: " + persona.nombre + "<br>Edad: " + persona.edad + "<br>Trabaja: " + persona.trabaja + "<hr>";
+        datosPersonas.appendChild(personaDiv);
+    });
+    
+    document.getElementById("personasConvivientesForm").reset();
+});

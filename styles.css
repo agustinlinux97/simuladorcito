@@ -151,22 +151,25 @@ input:focus {
     transition-duration: 400ms;
     outline: none;
 }
-
-/* PRUEBAS */
-.contenedor {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .div1, .div2, .div3 {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    margin:10px
-  }
-  
-  .div4 {
-    width: 200px;
-    height: 200px;
-    background-color: blue;
-  }
+#convivientes input {
+    background-color: rgb(255, 255, 255);
+    padding: 6px;
+}
+label {
+    font-size: 14px;
+    margin: 5px;
+}
+select {
+    background: url(images/down-arrow-svgrepo-com.svg) no-repeat center right 0.7rem;
+    font-family: 'Questrial', sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+}
+select:focus {
+    border: solid 1px rgb(65, 8, 170);
+    transition-duration: 400ms;
+    outline: none;
+}
+select::after{
+    background-color: aqua;
+}
