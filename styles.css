@@ -1,4 +1,5 @@
   @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
 * {
     margin: 0px;
@@ -7,16 +8,24 @@
 }
 body {
     background-image: linear-gradient( 173.1deg,  rgba(226,66,249,0.94) 10.2%, rgba(79,147,249,1) 77.3% );    margin: auto;
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Kanit', sans-serif;
     min-height: 100vh;
-    padding-top: 20px;
+    padding: 20px;
 }
 h1 {
-    font-size: 20px;
+    font-size: 28px;
     line-height: 40px;
 }
-p {
+h2 {
+    font-size: 18px;
+    line-height: 35px;
+}
+h3 {
     font-size: 14px;
+    line-height: 30px;
+}
+p {
+    font-size: 12px;
     line-height: 20px;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -25,30 +34,139 @@ ul {
     margin-left: 4px;
 }
 li {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 20px;
 }
-.main {
+main {
+    justify-content: space-around;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.contenido {
     margin: auto;
-    width: 40%;
-    background-color: rgb(255, 255, 255);
-    opacity: 0.80;
+    /* width: 40%; */
+    background-color: rgb(245, 245, 245);
     padding: 18px;
     border-radius: 6px;
-    transition-property: opacity, transform;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    transform: scale(1, 1);
+    margin-top: 20px;
+    width: 500px;
+    min-width: 250px;
 }
-.main:hover {
-    opacity: 0.92;
-    transition-property: opacity, transform;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    transform: scale(1.02, 1.02);
+#perfil {
+    display: none;
 }
-.item {
-    border: solid 1px #222;
+#ingreso {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    height: fit-content;
+}
+#info {
+    text-align: left;
+}
+#datos {
+    display: none;
+    flex-direction: row;
+}
+#mostrarIngresos, #mostrarGastos /* #mostrarAlquiler, #mostrarServicios, #mostrarComida, #mostrarTransporte, #mostrarOtros */ {
+    display: none;
+}
+#convivientes {
+    display: none;
+    flex-direction: row;
+}
+
+footer {
+    font-size: 10px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: whitesmoke;
     padding: 10px;
-    margin-top: 10px;
+    left: 0px;
 }
+/* Responsive */
+@media screen and (max-width: 1100px){
+    .contenido {
+        min-width: 400px;
+}
+}
+@media screen and (max-width: 950px){
+    .contenido {
+        width: 55%;
+}
+}
+@media screen and (max-width: 800px){
+    .contenido {
+        width: 65%;
+}
+}
+@media screen and (max-width: 700px){
+    .contenido {
+        width: 90%;
+}
+}
+@media screen and (max-width: 400px){
+    .contenido {
+        width: 90%;
+        min-width: 350px;
+}
+}
+
+
+
+/* Formularios */
+button {
+    background-color: rgb(251, 129, 255);
+}
+input, button {
+    padding: 10px;
+    border-radius: 4px;
+    border: solid 1px rgb(228, 228, 228);
+    font-family: 'Questrial', sans-serif;
+    display: block;
+    margin: 5px;
+    transition-duration: 400ms;
+    width: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:hover {
+    border: solid 1px rgb(189, 189, 189);
+    transition-duration: 400ms;
+}
+button:hover {
+    background-color: rgb(253, 188, 255);
+    border: solid 1px rgb(211, 211, 211);
+    transition-duration: 400ms;
+}
+input:focus {
+    border: solid 1px rgb(65, 8, 170);
+    transition-duration: 400ms;
+    outline: none;
+}
+
+/* PRUEBAS */
+.contenedor {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .div1, .div2, .div3 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin:10px
+  }
+  
+  .div4 {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }

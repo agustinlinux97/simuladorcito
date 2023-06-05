@@ -5,24 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Calculadora de gastos personales</title>
+    <title>CuentasClaras</title>
 </head>
 <body>
-    <div class="main">
-        <h1>Calcula tus gastos</h1>
-        <p>
-            Una calculadora sencilla y útil que te ayudará a organizar tus gastos con respecto a la situación económica actual de tu país.
-        </p>
-        <p>
-            Según tus ingresos y tus gastos, esta calculadora te informará sobre:
-        </p>
-            <li>Tu situación con respecto a la línea de pobreza establecida por el índice económico de tu país o región.</li>
-            <li>Los gastos fijos mensuales, es decir, el alquiler, la comida, los servicios, entre otros.</li>
-            <li>El dinero restante que puedes gastar en lo que se te antoje.</li>
-        <p>
-            Tener muy en cuenta que el índice de pobreza es solo un indicador de estadísticas. Cada situación es completamente distinta, y también estas mediciones suelen estar intervenidas por distintas corrientes ideológicas, así que te recomendamos que no te tomes esto tan en serio.
-        </p>
-    </div>
+    <main>
+        <!-- ESPACIO IZQUIERDA -->
+        <div id="containerleft">
+            <div id="ingreso" class="contenido">
+                <h1>Ingresar</h1>
+                <input type="text" id="nombreInput" placeholder="Ingrese su nombre" autocomplete="off" value="Agus">
+                <input type="number" id="edadInput" placeholder="Ingrese su edad" autocomplete="off" value="22">
+                <button onclick="guardarUsuario()" value="Enviar">Enviar</button>
+            </div>
+            <div id="perfil" class="contenido">
+                <h2>Bienvenido <span class="mostrarNombre"></span></h2>
+                <h2>Edad: <span class="mostrarEdad"></span> años</h2>
+            </div>
+            <div id="datos" class="contenido">
+                <h2>Ingresos</h2>
+                <div id="formularioIngresos">
+                    
+                    <input type="number" id="ingresosMensuales" placeholder="Ingresos mensuales" required>
+                    <button onclick="guardarIngresos()" id="guardarIngresos" value="Guardar">Guardar</button>
+                </div>
+                <!-- Oculto -->
+                <h3 id="mostrarIngresos"><hr>Ingresos mensuales: $<span id="valorIngresos"></span></h3>
+                <h2>Gastos</h2>
+                <div id="formularioGastos">
+                    <input type="number" id="gastosAlquiler" placeholder="Valor del alquiler" value="2000">
+                    <input type="number" id="gastosServicios" placeholder="Gastos en servicios" value="2000">
+                    <input type="number" id="gastosComida" placeholder="Gastos en comida" value="2000">
+                    <input type="number" id="gastosTransporte" placeholder="Gastos en transporte" value="2000">
+                    <input type="number" id="gastosOtros" placeholder="Otros gastos" value="2000">
+                    <button onclick="guardarGastos(); calculos()" id="guardarGastos" value="Guardar">Guardar</button>
+                </div>
+                <div id="mostrarGastos"><hr>
+                    <h3>Alquiler: $<span id="mostrarAlquiler"></span></h3>
+                    <h3>Servicios: $<span id="mostrarServicios"></span></h3>
+                    <h3>Comida: $<span id="mostrarComida"></span></h3>
+                    <h3>Transporte: $<span id="mostrarTransporte"></span></h3>
+                    <h3>Otros: $<span id="mostrarOtros"></span></h3>
+                </div>
+                <div id="mostrarSumaGastos"></div>
+                <div id="mostrarPobreza"></div>
+                <div id="totalSobrante"></div>
+                <div id="mensajePobreza"></div>
+            </div>
+            <div id="convivientes" class="contenido">
+                <h1>Personas convivientes</h1>
+                <input type="text" id="nombreConviviente1" placeholder="Nombre de conviviente" value="Ema">
+                <input type="text" id="edadConviviente1" placeholder="Edad de conviviente" value="16">
+                <label for="trabaja" >¿Trabaja?</label>
+                <input type="checkbox" id="trabaja" name="Trabaja" value="yes"checked />
+            </div>
+        </div>
+        <!-- ESPACIO DERECHA -->
+        <div id="containerright">
+            <div id="info" class="contenido" >
+                <h1>CuentasClaras</h1>
+                <p>
+                    Una calculadora sencilla y útil que te ayudará a organizar tus gastos con respecto a la situación económica actual de tu país.
+                </p>
+                <p>
+                    Según tus ingresos y tus gastos, esta calculadora te informará sobre:
+                </p>
+                    <li>Tu situación con respecto a la línea de pobreza establecida por el índice económico de tu país o región.</li>
+                    <li>Los gastos fijos mensuales, es decir, el alquiler, la comida, los servicios, entre otros.</li>
+                    <li>El dinero restante que puedes gastar en lo que se te antoje.</li>
+                <p>
+                    Tener muy en cuenta que el índice de pobreza es solo un indicador de estadísticas. Cada situación es completamente distinta, y también estas mediciones suelen estar intervenidas por distintas corrientes ideológicas, así que te recomendamos que no te tomes esto tan en serio.
+                </p>
+                <p>Bienvenido/a <span class="mostrarNombre"></span>, gracias por visitar nuestro sitio web.</p>
+            </div>
+        </div>
+</main>
+    <!-- <footer>CuentasClaras</footer> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js"></script>
 </body>
 </html>
