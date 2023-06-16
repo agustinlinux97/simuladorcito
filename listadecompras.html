@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>CuentasClaras</title>
+</head>
+<body>
+    <main>
+        <!-- ESPACIO IZQUIERDA -->
+        <div id="containerleft">
+            <div class="contenido">
+                <h2>LISTA DE COMPRAS</h1>
+                <form id="formularioCompra">
+                    <label for="nombreProducto">Producto:</label>
+                    <input type="text" id="nombreProducto">
+                    <label for="precioProducto">Precio:</label>
+                    <input type="number" id="precioProducto">
+                    <label for="cantidadProducto">Cantidad:</label>
+                    <input type="number" id="cantidadProducto">
+                    <button type="button" onclick="agregarItem()">Agregar</button>
+                </form>
+                <table id="listaCompras">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th id="thVacio"></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- ESPACIO DERECHA -->
+        <div id="containerright">
+            <div class="contenido">
+                <ul class="menu">
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="listadecompras.html">LISTA DE COMPRAS</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </div>
+</main>
+    <!-- <footer>CuentasClaras</footer> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="compras.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

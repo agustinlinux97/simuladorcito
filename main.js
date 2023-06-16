@@ -1,66 +1,3 @@
-
-// let alquiler, comida, transporte, otros;
-
-// alquiler = parseInt(prompt("Ingrese el monto de su alquiler:"));
-// comida = parseInt(prompt("Ingrese el monto de su comida:"));
-// transporte = parseInt(prompt("Ingrese el monto de su transporte:"));
-// otros = parseInt(prompt("Ingrese el monto de sus otros gastos:"));
-
-// let total = alquiler + comida + transporte + otros;
-
-// let ingresos = parseInt(prompt("Ingrese sus ingresos mensuales:"));
-
-// let lineaDePobreza = 191228;
-
-// function alerta(){
-//     if(ingresos >= lineaDePobreza){
-//         alert(`Su gasto mensual es de $${total}. Usted actualmente se encuentra por encima de la línea de pobreza establecida por el gobierno de su país. El valor actual de la canasta básica es de $${lineaDePobreza}`);
-//     }
-//     else {
-//         alert(`Su gasto mensual es de $${total}. Usted actualmente se encuentra bajo la línea de pobreza establecida por el gobierno de su país. El valor actual de la canasta básica es de $${lineaDePobreza}`);
-//     }
-// };
-
-// alerta();
-
-// const gastos = [alquiler, comida, transporte, otros];
-// alert(`Su lista de gastos: Alquiler: $${gastos[0]}, Comida: $${gastos[1]}, Transporte: $${gastos[2]}, Otros: $${gastos[3]}`);
-
-// let resto = ingresos - total;
-// alert(`A usted le sobran $${resto} para usar en lo que desee.`);
-
-// let convivientes = prompt("¿Usted convive con más personas en su hogar? Escriba SÍ o NO.");
-
-// convivientes = convivientes.toLowerCase();
-
-// if ((convivientes === "si") || (convivientes === "sí")){
-//     // Constructora de objetos de personas
-//     function Personas(nombre, edad) {
-//         this.nombre = nombre;
-//         this.edad = edad;
-//     }
-//     // Arreglo para guardar los objetos de cada persona y mostrarlos
-//     const personas = [];
-
-//     let cantidadConvivientes = parseInt(prompt("Ingrese la cantidad de personas con las que convive:"));
-//     for (let i = 1; i <= cantidadConvivientes; i++){
-//         let nombre = prompt(`Nombre de la persona ${i}:`);
-//         let edad = prompt(`Edad de ${nombre}`);
-//         let persona = new Personas(nombre, edad);
-//         personas.push(persona);
-//     }
-//     let alertaConvivientes = "Sus compañeros de casa son: "
-//     for (let i = 0; i < personas.length; i++) {
-//         alertaConvivientes += `${personas[i].nombre}, de ${personas[i].edad} años. `
-//     }
-//     alert(alertaConvivientes);
-// }else if (convivientes === "no"){
-//     alert("Usted vive solo.")
-// }else{
-//     alert("Recargue la página")
-// };
-
-// Formulario: Nombre de usuario y edad.
 sessionStorage.clear()
 
 function guardarUsuario(){
@@ -81,6 +18,7 @@ function guardarUsuario(){
         document.getElementById("ingreso").style.display = "none";
         document.getElementById("datos").style.display = "block";
         document.getElementById("convivientes").style.display = "block";
+        document.getElementById("convertidorContainer").style.display = "block";
     }
     else { 
         Swal.fire('Ingrese valores válidos')}
@@ -100,21 +38,6 @@ else {
     Swal.fire("Ingrese un valor")
 }
 }
-
-// ARRAY DE GASTOS
-// let gastosAlquiler = document.getElementById('gastosAlquiler').value;
-// let gastosServicios = document.getElementById("gastosServicios").value;
-// let gastosComida = document.getElementById("gastosComida").value;
-// let gastosTransporte = document.getElementById("gastosTransporte").value;
-// let gastosOtros = document.getElementById("gastosOtros").value;
-
-// let gastosArreglo = {
-//     gastosAlquiler: gastosAlquiler,
-//     gastosServicios: gastosServicios,
-//     gastosComida: gastosComida,
-//     gastosTransporte: gastosTransporte,
-//     gastosOtros: gastosOtros
-// }
 
 function guardarGastos() {
     let gastosAlquiler = parseInt(document.getElementById("gastosAlquiler").value);
@@ -140,7 +63,7 @@ function guardarGastos() {
         document.getElementById("mostrarOtros").innerHTML = gastosOtros;
         
         let totalGastos = gastosAlquiler + gastosServicios + gastosComida + gastosTransporte + gastosOtros;
-        document.getElementById("mostrarSumaGastos").innerHTML = "<h2>Total Gastos: $" + totalGastos + "</h2>";
+        document.getElementById("mostrarSumaGastos").innerHTML = "<h4>Total Gastos: $" + totalGastos + "</h4>";
         
         let ingresos = parseInt(document.getElementById("ingresosMensuales").value);
         let lineaDePobreza = 191800;
@@ -148,8 +71,8 @@ function guardarGastos() {
             alert("Ingrese sus ingresos, sino no podremos ingresar los ingresos de la ingresada... Jeje")
         }
         let sobrante = ingresos - totalGastos;
-            document.getElementById("totalSobrante").innerHTML = "<h2>Total sobrante: $" + sobrante + "</h2>";
-            document.getElementById("mostrarPobreza").innerHTML = "<h2>Línea de pobreza: $" + lineaDePobreza + "</h2>";
+            document.getElementById("totalSobrante").innerHTML = "<h4>Total sobrante: $" + sobrante + "</h4>";
+            document.getElementById("mostrarPobreza").innerHTML = "<h4>Línea de pobreza: $" + lineaDePobreza + "</h4>";
             
             if (ingresos >= lineaDePobreza){
                 document.getElementById("mensajePobreza").innerHTML = "<h3>Usted se encuentra por encima de la línea de pobreza</h3>";
@@ -164,24 +87,45 @@ function guardarGastos() {
     }
 }
 
+// CONVERSION A MONEDAS EXTRANJERAS
 
-// let ingresosSS = JSON.parse(sessionStorage.getItem("ingresos"));
-// let gastosAlquilerSS = JSON.parse(sessionStorage.getItem("gastosAlquiler"));
-// let gastosServiciosSS = JSON.parse(sessionStorage.getItem("gastosServicios"));
-// let gastosComidaSS = JSON.parse(sessionStorage.getItem("gastosComida"));
-// let gastosTransporteSS = JSON.parse(sessionStorage.getItem("gastosTransporte"));
-// let gastosOtrosSS = JSON.parse(sessionStorage.getItem("gastosOtros"));
+function mostrarConvertidor() {
+    document.getElementById('convertidor').style.display = "block";
+}
+
+document.getElementById("btnMostrarConvertidor").addEventListener("click", mostrarConvertidor);
+
+let divisaArg = "ARS";
+let divisaExt = document.getElementById('divisaExt');
+let rateDiv = document.getElementById('rate');
+let resultado = document.getElementById('resultadoConversion');
+
+let ingresos = document.getElementById('ingresosMensuales');
+let gastosAlquiler = document.getElementById("gastosAlquiler");
+let gastosServicios = parseInt(document.getElementById("gastosServicios"));
+let gastosComida = parseInt(document.getElementById("gastosComida"));
+let gastosTransporte = parseInt(document.getElementById("gastosTransporte"));
+let gastosOtros = parseInt(document.getElementById("gastosOtros"));
 
 
-    
-    // gastosServicios ? document.getElementById("mostrarAlquiler").style.display = "block" : alert("hola");
-    // gastosComida
-    // gastosTransporte
-    // gastosOtros
+function convertir() {
+    let divisaArg = "ARS";
+    let divisa2 = divisaExt.value;
 
-// OBJETO DE PERSONAS CONVIVIENTES
+  fetch(`https://v6.exchangerate-api.com/v6/38b88de541fd4f37df741b8a/latest/ARS`)
+    .then((res) => res.json())
+    .then((data) => {
+        let rate = data.conversion_rates[divisa2];
+        rateDiv.innerHTML = `<p>1 ${divisaArg} = ${rate} ${divisa2}</p>`;
+        resultado.value = (ingresos.value * rate).toFixed(2);
+        resultado.innerHTML = `Sus ingresos en ${divisa2} son de: ${resultado.value}`
+    });
+}
 
+ingresos.addEventListener('input', convertir);
+divisaExt.addEventListener('change', convertir);
 
+convertir();
 
 function Persona(nombre, edad, trabaja) {
     this.nombre = nombre;
@@ -189,10 +133,10 @@ function Persona(nombre, edad, trabaja) {
     this.trabaja = trabaja;
 }
 
-    // Guardar datos en array
-    const personas = [];
+// Guardar datos en array
+const personas = [];
 
-    document.getElementById("personasConvivientesForm").addEventListener("submit", function(e) {
+document.getElementById("personasConvivientesForm").addEventListener("submit", function(e) {
     e.preventDefault(); 
 
     let nombre = document.getElementById("nombre").value;
@@ -203,14 +147,13 @@ function Persona(nombre, edad, trabaja) {
 
     personas.push(persona);
 
-    // Mostrar convivientes
     let datosPersonas = document.getElementById("datosConvivientes");
 
-    personas.forEach(function(persona){
-        let personaDiv = document.createElement("div");
-        personaDiv.innerHTML = "Nombre: " + persona.nombre + "<br>Edad: " + persona.edad + "<br>Trabaja: " + persona.trabaja + "<hr>";
-        datosPersonas.appendChild(personaDiv);
-    });
-    
-    document.getElementById("personasConvivientesForm").reset();
+    let personaDiv = document.createElement("div");
+    personaDiv.innerHTML = "Nombre: " + persona.nombre + "<br>Edad: " + persona.edad + "<br>Trabaja: " + persona.trabaja + "<hr>";
+    datosPersonas.insertBefore(personaDiv, datosPersonas.firstChild);
+
+    document.getElementById("nombre").value = "";
+    document.getElementById("edad").value = "";
+    document.getElementById("trabaja").value = "";
 });

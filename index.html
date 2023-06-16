@@ -22,22 +22,24 @@
                 <h2>Edad: <span class="mostrarEdad"></span> años</h2>
             </div>
             <div id="datos" class="contenido">
-                <h2>Ingresos</h2>
+                <h2>INGRESOS</h2>
                 <div id="formularioIngresos">
                     
                     <input type="number" id="ingresosMensuales" placeholder="Ingresos mensuales" required>
                     <button onclick="guardarIngresos()" id="guardarIngresos" value="Guardar">Guardar</button>
                 </div>
                 <!-- Oculto -->
-                <h3 id="mostrarIngresos"><hr>Ingresos mensuales: $<span id="valorIngresos"></span></h3>
-                <h2>Gastos</h2>
+                <div id="mostrarIngresos"><hr>
+                <h3>Ingresos mensuales: $<span id="valorIngresos"></span></h3>
+                </div>
+                <h2>GASTOS</h2>
                 <div id="formularioGastos">
-                    <input type="number" id="gastosAlquiler" placeholder="Valor del alquiler" value="2000">
-                    <input type="number" id="gastosServicios" placeholder="Gastos en servicios" value="2000">
-                    <input type="number" id="gastosComida" placeholder="Gastos en comida" value="2000">
-                    <input type="number" id="gastosTransporte" placeholder="Gastos en transporte" value="2000">
-                    <input type="number" id="gastosOtros" placeholder="Otros gastos" value="2000">
-                    <button onclick="guardarGastos(); calculos()" id="guardarGastos" value="Guardar">Guardar</button>
+                    <input type="number" id="gastosAlquiler" placeholder="Valor del alquiler">
+                    <input type="number" id="gastosServicios" placeholder="Gastos en servicios">
+                    <input type="number" id="gastosComida" placeholder="Gastos en comida">
+                    <input type="number" id="gastosTransporte" placeholder="Gastos en transporte">
+                    <input type="number" id="gastosOtros" placeholder="Otros gastos">
+                    <button onclick="guardarGastos()" id="guardarGastos" value="Guardar">Guardar</button>
                 </div>
                 <div id="mostrarGastos"><hr>
                     <h3>Alquiler: $<span id="mostrarAlquiler"></span></h3>
@@ -51,8 +53,73 @@
                 <div id="totalSobrante"></div>
                 <div id="mensajePobreza"></div>
             </div>
+            <!-- CONVERSION -->
+            <div id="convertidorContainer" class="contenido">
+                <h2>CONVERSIÓN A MONEDA EXTRANJERA</h2>
+                <button id="btnMostrarConvertidor" value="submit">Convertir a USD</button>
+                <div id="convertidor">
+                <div class="rate" id="rate"></div>
+                <div class="divisa">
+                    <select id="divisaExt">
+                        <option value="AED">AED</option>
+                        <option value="ARS">ARS</option>
+                        <option value="AUD">AUD</option>
+                        <option value="BGN">BGN</option>
+                        <option value="BRL">BRL</option>
+                        <option value="BSD">BSD</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CHF">CHF</option>
+                        <option value="CLP">CLP</option>
+                        <option value="CNY">CNY</option>
+                        <option value="COP">COP</option>
+                        <option value="CZK">CZK</option>
+                        <option value="DKK">DKK</option>
+                        <option value="DOP">DOP</option>
+                        <option value="EGP">EGP</option>
+                        <option value="EUR">EUR</option>
+                        <option value="FJD">FJD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="GTQ">GTQ</option>
+                        <option value="HKD">HKD</option>
+                        <option value="HRK">HRK</option>
+                        <option value="HUF">HUF</option>
+                        <option value="IDR">IDR</option>
+                        <option value="ILS">ILS</option>
+                        <option value="INR">INR</option>
+                        <option value="ISK">ISK</option>
+                        <option value="JPY">JPY</option>
+                        <option value="KRW">KRW</option>
+                        <option value="KZT">KZT</option>
+                        <option value="MXN">MXN</option>
+                        <option value="MYR">MYR</option>
+                        <option value="NOK">NOK</option>
+                        <option value="NZD">NZD</option>
+                        <option value="PAB">PAB</option>
+                        <option value="PEN">PEN</option>
+                        <option value="PHP">PHP</option>
+                        <option value="PKR">PKR</option>
+                        <option value="PLN">PLN</option>
+                        <option value="PYG">PYG</option>
+                        <option value="RON">RON</option>
+                        <option value="RUB">RUB</option>
+                        <option value="SAR">SAR</option>
+                        <option value="SEK">SEK</option>
+                        <option value="SGD">SGD</option>
+                        <option value="THB">THB</option>
+                        <option value="TRY">TRY</option>
+                        <option value="TWD">TWD</option>
+                        <option value="UAH">UAH</option>
+                        <option value="USD" selected>USD</option>
+                        <option value="UYU">UYU</option>
+                        <option value="VND">VND</option>
+                        <option value="ZAR">ZAR</option>
+                    </select>
+                    <span id="resultadoConversion"></span>
+                </div>
+                </div>
+            </div>
             <div id="convivientes" class="contenido">
-                <h2>Personas convivientes</h2>
+                <h2>PERSONAS CONVIVIENTES</h2>
                 <!-- <input type="text" id="nombreConviviente1" placeholder="Nombre de conviviente" value="Ema">
                 <input type="text" id="edadConviviente1" placeholder="Edad de conviviente" value="16">
                 <label for="trabaja" >¿Trabaja?</label>
@@ -72,7 +139,14 @@
         </div>
         <!-- ESPACIO DERECHA -->
         <div id="containerright">
-            <div id="info" class="contenido" >
+            <div class="contenido">
+                <ul class="menu">                    
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="listadecompras.html">LISTA DE COMPRAS</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </div>
+            <div id="info" class="contenido">
                 <h1>CuentasClaras</h1>
                 <p>
                     Una calculadora sencilla y útil que te ayudará a organizar tus gastos con respecto a la situación económica actual de tu país.
@@ -86,6 +160,9 @@
                 <p>
                     Tener muy en cuenta que el índice de pobreza es solo un indicador de estadísticas. Cada situación es completamente distinta, y también estas mediciones suelen estar intervenidas por distintas corrientes ideológicas, así que te recomendamos que no te tomes esto tan en serio.
                 </p>
+                <p>
+                    El convertidor de moneda por ahora solo funciona recibiendo pesos argentinos en sus ingresos.
+                </p>
                 <p>Bienvenido/a <span class="mostrarNombre"></span>, gracias por visitar nuestro sitio web.</p>
             </div>
         </div>
@@ -93,5 +170,6 @@
     <!-- <footer>CuentasClaras</footer> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js"></script>
+    <script src="api.js"></script>
 </body>
 </html>
